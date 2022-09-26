@@ -2,6 +2,7 @@
 
 This notebook will:
     - explain purpose of the notebook
+    - change cell type to markdown, when you execute the cell, it will display nicely with blue bold title ...
 
 Summary of cells' function
     - user input, date range report to be generated
