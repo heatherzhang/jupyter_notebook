@@ -1,0 +1,11 @@
+from IPython.utils import io
+from airflow.providers.postgres.hooks.postgres import PostgresHook
+
+# without this, db connection pwd will be written to standard output w clear text password
+def donothing():
+    pass
+    
+with io.capture_output() as captured:
+    donothing()
+    src_pg = PostgresHook(postgres_conn_id='DbNameAsSetupInAFConnection')
+    db_conn = src_pg.get_conn()
