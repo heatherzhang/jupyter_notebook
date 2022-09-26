@@ -1,0 +1,14 @@
+# postgres connection urls are different for different version, postgres(ql)://uid:pwd@host:port/db
+
+from sqlalchemy import __version__ as sqlalchemy_version
+from packaging.version import parse as version_parse
+
+def get_sqlalchemy_conn():
+    src_pg = PostgresHook(postgres_conn_id=db)
+    db_conn = src_pg.get_conn()
+    return db_conn
+
+url_pg_dialect = "postgresql" if version_parse(sqlalchemy_version) >= version_parse("1.4.0") else "postgres"
+with get_db_conn(db) as db_conn:
+    info = db_conn.info
+    db_url = f"{url_pg_dialect}://{info.user}@{info.host}:{info.port}/{info.dbname}"
