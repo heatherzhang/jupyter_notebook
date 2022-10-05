@@ -8,3 +8,4 @@ Summary of cells' function
     - user input, date range report to be generated
     - generate sql to report on date range
     - dump data for the data range to csv/s3/...
+
