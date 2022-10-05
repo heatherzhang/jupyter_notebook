@@ -12,3 +12,4 @@ url_pg_dialect = "postgresql" if version_parse(sqlalchemy_version) >= version_pa
 with get_sqlalchemy_conn(db) as db_conn:
     info = db_conn.info
     db_url = f"{url_pg_dialect}://{info.user}@{info.host}:{info.port}/{info.dbname}"
+
